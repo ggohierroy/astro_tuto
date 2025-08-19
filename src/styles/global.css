@@ -10,7 +10,8 @@ body {
 }
 
 section {
-    margin-top: 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     padding: 2.5rem 2rem;
     background: rgba(13, 26, 45, 0.97);
     border-radius: 16px;
