@@ -1,6 +1,4 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 const { pageTitle } = Astro.props;
 ---
@@ -11,6 +9,12 @@ const { pageTitle } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+	<meta name="description" content="Electronic music by Gabriel Klopzig — releases, shows, and contact." />
+	<link rel="canonical" href="https://gabrielklopzig.com/" />
+	<meta property="og:title" content="Gabriel Klopzig — Official Site" />
+	<meta property="og:description" content="Electronic music by Gabriel Klopzig." />
+	<meta property="og:url" content="https://gabrielklopzig.com/" />
+	<meta property="og:type" content="website" />
   </head>
   <body>
 	<slot />
