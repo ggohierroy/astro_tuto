@@ -6,6 +6,7 @@ body {
     padding: 0;
     min-height: 100vh;
     line-height: 1.7;
+    padding-inline: 0.5rem;
 }
 
 section {
@@ -121,10 +122,12 @@ li {
     border-radius: 18px 4px 18px 4px;
     padding: 1.2rem;
     display: flex;
+    flex: 1 1 18rem;
     align-items: center;
     gap: 1.2rem;
     box-shadow: 0 4px 16px #ff9800;
     min-width: 220px;
+    max-height: 100px;
     transform: rotate(-2deg);
     border: 2px solid #ff9800;
     transition: box-shadow 0.2s, transform 0.2s;
@@ -340,8 +343,8 @@ li {
 }
 
 .merch-item img {
-    width: 500x;
-    height: 500px;
+    max-width: 500px;
+    max-height: 500px;
     object-fit: cover;
     border-radius: 12px;
     margin-bottom: 0.7rem;
@@ -350,8 +353,8 @@ li {
 }
 
 .merch-item img.merch-large {
-  width: 500px;
-  height: 500px;
+  max-width: 500px;
+  max-height: 500px;
   object-fit: cover;
   border-radius: 24px;
   margin-bottom: 1rem;
@@ -439,7 +442,7 @@ li {
     .gallery-list {
         flex-direction: column;
         gap: 1.2rem;
-        align-items: center;
+        align-items: stretch;
     }
 }
 
