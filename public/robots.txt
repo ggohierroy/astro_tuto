@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gabrielklopzig.com/sitemap-index.xml
