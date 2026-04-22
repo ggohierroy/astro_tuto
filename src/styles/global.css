@@ -1,479 +1,706 @@
 :root {
-  --color-bg: radial-gradient(circle at 20% 40%, #ff9800 0%, #01BFD4 100%);
-  --color-primary: #01BFD4;
-  --color-primary-shadow: #029dae;
-  --color-accent: #ff9800;
-  --color-dark: #232526;
-  --color-light: #f4f4f4;
+  --color-bg: #1a1714;
+  --color-bg-soft: #221e1a;
+  --color-surface: rgba(236, 228, 215, 0.025);
+  --color-border: rgba(236, 228, 215, 0.08);
+  --color-fg: #ece4d7;
+  --color-fg-muted: #a39b8f;
+  --color-fg-subtle: #6b645c;
+  --color-accent: #c67b5c;
+  --color-accent-soft: rgba(198, 123, 92, 0.15);
+  --color-sage: #8a9183;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Montserrat', Arial, sans-serif;
-    background: var(--color-bg);
-    color: var(--color-light);
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    line-height: 1.7;
-    padding-inline: 0.5rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse 60% 50% at 15% 10%, rgba(198, 123, 92, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 75%, rgba(138, 145, 131, 0.10) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--color-fg);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  line-height: 1.7;
+  font-weight: 400;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-inline: 1rem;
 }
 
 section {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding: 2.5rem 2rem;
-    background: rgba(13, 26, 45, 0.97);
-    border-radius: 16px;
-    max-width: 750px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    overflow: hidden;
+  margin: 3.5rem auto;
+  padding: 3rem 2.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  max-width: 720px;
+  position: relative;
 }
 
 section:first-of-type {
-    margin-top: 2rem;
+  margin-top: 4rem;
+  border: none;
+  background: transparent;
+  padding-top: 2rem;
 }
 
 h1,
 h2 {
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--color-fg);
 }
 
 h1 {
-    font-size: 3rem;
-    color: #ff9800;
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
-    text-shadow: 2px 2px 0 var(--color-primary), 0 0 12px #232526;
-    transform: rotate(-2deg);
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  line-height: 1.02;
+  margin-bottom: 1.2rem;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
 }
 
 h2 {
-    font-size: 1.7rem;
-    color: var(--color-primary);
-    margin-top: 0;
-    margin-bottom: 1rem;
-    text-shadow: 1px 1px 0 #ff9800;
-    transform: rotate(1deg);
+  font-size: 1.5rem;
+  margin-bottom: 1.8rem;
+  font-style: italic;
+  font-variation-settings: "opsz" 30;
+}
+
+h2::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--color-accent);
+  margin-bottom: 1rem;
 }
 
 .bio {
-    font-size: 1.2rem;
-    color: #fff7e6;
-    margin-bottom: 1rem;
-    font-style: italic;
-    background: linear-gradient(90deg, #ff9800 10%, transparent 90%);
-    padding: 0.5rem 1rem;
-    border-radius: 12px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--color-fg-muted);
+  font-style: italic;
+  font-weight: 300;
+  max-width: 34em;
+  background: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
 }
 
 ul {
-    margin: 0.5rem 0 0 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 li {
-    margin-bottom: 1.2rem;
+  margin-bottom: 0;
 }
 
-.tour-dates{
-    margin-bottom: 3rem;
+/* -------------------- Profile -------------------- */
+.profile-flex {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.profile-photo {
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  box-shadow:
+    0 0 0 1px rgba(198, 123, 92, 0.08),
+    0 16px 40px rgba(0, 0, 0, 0.45);
+  background: var(--color-bg-soft);
+  filter: saturate(0.92);
+}
+
+/* -------------------- Tour dates -------------------- */
+.tour-dates {
+  margin-bottom: 2.5rem;
 }
 
 .tour-dates li {
-    border-bottom: 2px dotted #ff9800;
-    padding-bottom: 0.7rem;
-    font-size: 1.1rem;
-    transform: rotate(-1deg);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.2rem;
+  align-items: baseline;
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 0;
+  font-size: 1rem;
+  color: var(--color-fg-muted);
+  transform: none;
+}
+
+.tour-dates li:last-child {
+  border-bottom: none;
 }
 
 .tour-dates strong {
-    color: var(--color-primary);
-    font-weight: 900;
+  color: var(--color-fg);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
 }
 
 .tour-dates em {
-    color: #ff9800;
-    font-style: normal;
-    font-weight: 700;
+  color: var(--color-accent);
+  font-style: normal;
+  font-weight: 400;
 }
 
+/* -------------------- Shop link -------------------- */
 .shop-link {
-    display: inline-block;
-    margin-top: 0;
-    padding: 0.8rem 1.7rem;
-    background: linear-gradient(90deg, #ff9800 0%, #01BFD4 100%);
-    color: #232526;
-    border-radius: 16px 4px 16px 4px;
-    text-decoration: none;
-    font-weight: 900;
-    font-size: 1.2rem;
-    box-shadow: 0 2px 12px var(--color-primary);
-    border: 2px solid #fff7e6;
-    letter-spacing: 2px;
-    transition: background 0.2s, color 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.85rem 1.8rem;
+  background: transparent;
+  color: var(--color-fg);
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: none;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 .shop-link:hover {
-    background: linear-gradient(90deg, #01BFD4 0%, #ff9800 100%);
-    color: #fff;
-    transform: scale(1.08) rotate(-2deg);
+  background: var(--color-accent);
+  color: var(--color-bg);
+  transform: none;
 }
 
+/* -------------------- Discography -------------------- */
 .discography-list {
-    display: flex;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  justify-content: start;
 }
 
 .album {
-    background: linear-gradient(135deg, #232526 70%, #01BFD4 100%);
-    border-radius: 18px 4px 18px 4px;
-    padding: 1.2rem;
-    display: flex;
-    flex: 1 1 18rem;
-    align-items: center;
-    gap: 1.2rem;
-    box-shadow: 0 4px 16px #ff9800;
-    min-width: 220px;
-    max-height: 100px;
-    transform: rotate(-2deg);
-    border: 2px solid #ff9800;
-    transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: none;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  max-height: none;
+  min-width: 0;
+  transform: none;
+  transition: transform 0.5s ease;
 }
 
 .album:hover {
-    box-shadow: 0 8px 32px var(--color-primary);
-    transform: rotate(2deg) scale(1.05);
+  background: none;
+  box-shadow: none;
+  transform: translateY(-4px);
 }
 
 .album img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 2px solid var(--color-primary);
-    box-shadow: 0 2px 8px #ff9800;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  filter: saturate(0.9);
+  transition: filter 0.5s ease;
+}
+
+.album:hover img {
+  filter: saturate(1.05);
 }
 
 .album strong {
-    color: #ff9800;
-    font-size: 1.2rem;
-    font-weight: 900;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--color-fg);
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.album span {
+  color: var(--color-fg-subtle);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
 }
 
 .album a {
-    color: var(--color-primary);
-    text-decoration: underline wavy #ff9800;
-    font-weight: 700;
-    font-size: 1rem;
-    transition: color 0.2s;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-top: 0.4rem;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 .album a:hover {
-    color: #ff9800;
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
 }
 
+/* -------------------- Media gallery (kept subtle in case re-enabled) -------------------- */
 .media-gallery .gallery-list {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
-.gallery-photo {
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    border-radius: 18px 4px 18px 4px;
-    border: 2px solid #ff9800;
-    box-shadow: 0 2px 12px var(--color-primary);
-    transform: rotate(-3deg);
-    transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.gallery-photo:hover {
-    box-shadow: 0 8px 32px #ff9800;
-    transform: rotate(3deg) scale(1.08);
+.gallery-photo,
+.gallery-video {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  transform: none;
+  filter: saturate(0.9);
+  transition: filter 0.5s ease, transform 0.5s ease;
 }
 
 .gallery-video {
-    width: 230px;
-    height: 130px;
-    border-radius: 18px 4px 18px 4px;
-    border: 2px solid var(--color-primary);
-    box-shadow: 0 2px 12px #ff9800;
-    transform: rotate(2deg);
-    transition: box-shadow 0.2s, transform 0.2s;
+  aspect-ratio: 16 / 9;
 }
 
+.gallery-photo:hover,
 .gallery-video:hover {
-    box-shadow: 0 8px 32px var(--color-primary);
-    transform: rotate(-2deg) scale(1.08);
+  transform: translateY(-3px);
+  filter: saturate(1.05);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* -------------------- Social links -------------------- */
+.social-links > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
 }
 
 .social-links .social-link {
-    display: inline-block;
-    margin-right: 1.2rem;
-    color: #ff9800;
-    text-decoration: none;
-    font-weight: 900;
-    font-size: 1.15rem;
-    letter-spacing: 1px;
-    border-bottom: 2px dashed var(--color-primary);
-    padding-bottom: 0.2rem;
-    transition: color 0.2s, border-color 0.2s;
+  display: inline-block;
+  margin: 0;
+  color: var(--color-fg-muted);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: none;
+  padding-bottom: 0.2rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.social-links .social-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
 }
 
 .social-links .social-link:hover {
-    color: var(--color-primary);
-    border-color: #ff9800;
+  color: var(--color-fg);
+  border-color: transparent;
 }
 
+.social-links .social-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* -------------------- Newsletter -------------------- */
 .newsletter form {
-    display: flex;
-    gap: 0.7rem;
-    margin-top: 0.7rem;
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 0.7rem;
+  flex-wrap: wrap;
 }
 
 .newsletter input[type="email"] {
-    padding: 0.7rem;
-    border-radius: 12px;
-    border: 2px solid #ff9800;
-    background: #232526;
-    color: #f4f4f4;
-    font-size: 1.1rem;
+  flex: 1 1 220px;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-soft);
+  color: var(--color-fg);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter input[type="email"]:focus {
+  outline: none;
+  border-color: var(--color-accent);
 }
 
 .newsletter button {
-    padding: 0.7rem 1.2rem;
-    border-radius: 12px;
-    border: none;
-    background: linear-gradient(90deg, #01BFD4 0%, #ff9800 100%);
-    color: #232526;
-    font-weight: 900;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: background 0.2s, color 0.2s, transform 0.2s;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-fg);
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: inherit;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .newsletter button:hover {
-    background: linear-gradient(90deg, #ff9800 0%, #01BFD4 100%);
-    color: #fff;
-    transform: scale(1.08) rotate(-2deg);
+  background: var(--color-accent);
+  color: var(--color-bg);
+  transform: none;
 }
 
+/* -------------------- Press -------------------- */
 .press ul {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .press li {
-    margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.press li:last-child {
+  margin-bottom: 0;
 }
 
 .press blockquote {
-    margin: 0.7rem 0 0 0;
-    padding-left: 1.2rem;
-    border-left: 4px solid var(--color-primary);
-    font-style: italic;
-    color: #fff7e6;
-    background: linear-gradient(90deg, #01BFD4 10%, transparent 90%);
-    border-radius: 8px;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 1px solid var(--color-accent);
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--color-fg);
+  background: none;
+  border-radius: 0;
 }
 
 .press cite {
-    display: block;
-    margin-top: 0.3rem;
-    font-size: 1rem;
-    color: #ff9800;
-    font-weight: 700;
+  display: block;
+  margin-top: 0.8rem;
+  padding-left: 1.5rem;
+  font-size: 0.8rem;
+  font-style: normal;
+  color: var(--color-fg-subtle);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* -------------------- Contact / booking -------------------- */
+.contact-booking iframe {
+  width: 100%;
+  max-width: 100%;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-bg-soft);
 }
 
 .contact-booking form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.7rem;
 }
 
 .contact-booking input,
 .contact-booking textarea {
-    padding: 0.7rem;
-    border-radius: 12px;
-    border: 2px solid var(--color-primary);
-    background: #232526;
-    color: #f4f4f4;
-    font-size: 1.1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-soft);
+  color: var(--color-fg);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.contact-booking input:focus,
+.contact-booking textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
 }
 
 .contact-booking textarea {
-    min-height: 80px;
-    resize: vertical;
+  min-height: 120px;
+  resize: vertical;
 }
 
 .contact-booking button {
-    padding: 0.7rem 1.2rem;
-    border-radius: 12px;
-    border: none;
-    background: linear-gradient(90deg, #ff9800 0%, #01BFD4 100%);
-    color: #232526;
-    font-weight: 900;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: background 0.2s, color 0.2s, transform 0.2s;
+  align-self: flex-start;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-fg);
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: inherit;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .contact-booking button:hover {
-    background: linear-gradient(90deg, #01BFD4 0%, #ff9800 100%);
-    color: #fff;
-    transform: scale(1.08) rotate(-2deg);
+  background: var(--color-accent);
+  color: var(--color-bg);
+  transform: none;
 }
 
+/* -------------------- Featured merch -------------------- */
 .featured-merch .merch-list {
-    display: flex;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  justify-content: start;
 }
 
 .merch-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: linear-gradient(135deg, #232526 70%, #ff9800 100%);
-    border-radius: 18px 4px 18px 4px;
-    padding: 1.2rem;
-    text-decoration: none;
-    color: #f4f4f4;
-    box-shadow: 0 4px 16px var(--color-primary);
-    border: 2px solid var(--color-primary);
-    transition: background 0.2s, color 0.2s, transform 0.2s;
-    transform: rotate(-2deg);
-}
-
-.merch-item img {
-    max-width: 500px;
-    max-height: 500px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 0.7rem;
-    border: 2px solid #ff9800;
-    box-shadow: 0 2px 8px var(--color-primary);
-}
-
-.merch-item img.merch-large {
-  max-width: 500px;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: 24px;
-  margin-bottom: 1rem;
-  border: 3px solid #ff9800;
-  box-shadow: 0 4px 24px var(--color-primary);
-}
-
-.merch-item span {
-  font-size: 1.3rem;
-  font-weight: 900;
-  color: var(--color-primary);
-  letter-spacing: 1px;
-  text-align: center;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  text-decoration: none;
+  color: var(--color-fg);
+  box-shadow: none;
+  transform: none;
+  transition: transform 0.5s ease;
 }
 
 .merch-item:hover {
-    background: linear-gradient(135deg, #ff9800 70%, #232526 100%);
-    color: #232526;
-    transform: rotate(2deg) scale(1.07);
+  background: none;
+  color: var(--color-fg);
+  transform: translateY(-4px);
+}
+
+.merch-item img,
+.merch-item img.merch-large {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  max-height: none;
+  object-fit: cover;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 0.4rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  filter: saturate(0.9);
+  transition: filter 0.5s ease;
+}
+
+.merch-item:hover img,
+.merch-item:hover img.merch-large {
+  filter: saturate(1.05);
+}
+
+.merch-item span {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--color-fg);
+  letter-spacing: 0;
+  text-align: left;
+  display: block;
 }
 
 .merch-item:hover span {
-    color: #ff9800;
+  color: var(--color-accent);
+}
+
+.merch-note {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--color-fg-subtle);
+  transition: color 0.3s ease;
+}
+
+.merch-item:hover .merch-note {
+  color: var(--color-fg-muted);
+}
+
+/* -------------------- Music player -------------------- */
+.music-player iframe {
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-soft);
 }
 
 .music-player audio {
-    width: 100%;
-    margin-top: 0.7rem;
-    border-radius: 12px;
-    background: #232526;
-    border: 2px solid #ff9800;
+  width: 100%;
+  margin-top: 0.7rem;
+  border-radius: 999px;
+  background: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
 }
 
+/* -------------------- Upcoming projects -------------------- */
 .upcoming-projects ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .upcoming-projects li {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    transform: rotate(-1deg);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: var(--color-fg-muted);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 0;
+  transform: none;
+}
+
+.upcoming-projects li:last-child {
+  border-bottom: none;
 }
 
 .upcoming-projects strong {
-    color: #ff9800;
-    font-weight: 900;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-fg);
+  font-size: 1.1rem;
 }
 
+.upcoming-projects span {
+  color: var(--color-fg-subtle);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+/* -------------------- Fan testimonials -------------------- */
 .fan-testimonials ul {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .fan-testimonials li {
-    margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.fan-testimonials li:last-child {
+  margin-bottom: 0;
 }
 
 .fan-testimonials blockquote {
-    margin: 0.7rem 0 0 0;
-    padding-left: 1.2rem;
-    border-left: 4px solid #ff9800;
-    font-style: italic;
-    color: #fff7e6;
-    background: linear-gradient(90deg, #ff9800 10%, transparent 90%);
-    border-radius: 8px;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 1px solid var(--color-accent);
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--color-fg);
+  background: none;
+  border-radius: 0;
 }
 
 .fan-testimonials cite {
-    display: block;
-    margin-top: 0.3rem;
-    font-size: 1rem;
-    color: var(--color-primary);
-    font-weight: 700;
+  display: block;
+  margin-top: 0.8rem;
+  padding-left: 1.5rem;
+  font-size: 0.8rem;
+  font-style: normal;
+  color: var(--color-fg-subtle);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 400;
 }
 
+/* -------------------- Responsive -------------------- */
 @media (max-width: 900px) {
-    section {
-        padding: 1.2rem 0.5rem;
-        max-width: 98vw;
-    }
+  body {
+    font-size: 16px;
+    padding-inline: 0.75rem;
+  }
 
-    .discography-list,
-    .merch-list,
-    .gallery-list {
-        flex-direction: column;
-        gap: 1.2rem;
-        align-items: stretch;
-    }
-}
+  section {
+    padding: 2rem 1.5rem;
+    margin: 2.5rem auto;
+  }
 
-.profile-flex {
-    display: flex;
-    align-items: center;
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .profile-flex {
+    gap: 1.5rem;
+  }
+
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .discography-list,
+  .merch-list,
+  .gallery-list {
+    grid-template-columns: 1fr;
     gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.profile-photo {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid var(--color-primary);
-    box-shadow: 0 2px 12px var(--color-primary-shadow);
-    background: #232526;
+  }
 }
